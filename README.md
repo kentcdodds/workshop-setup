@@ -48,6 +48,10 @@ committing it directly into their project. You can download the UMD build via
 npm if you like (then just copy/paste the file from `node_modules`) or download
 it from `unpkg.com` here: https://unpkg.com/workshop-setup/dist/bundled/index.js
 
+```
+curl -o scripts/workshop-setup.js -L https://unpkg.com/workshop-setup/dist/bundled/index.js
+```
+
 This module is distributed via [npm][npm] which is bundled with [node][node] and
 can be installed as one of your project's `devDependencies`:
 
