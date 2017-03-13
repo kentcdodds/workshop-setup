@@ -1,7 +1,7 @@
 {
   "name": "workshop-setup",
   "version": "0.0.0-development",
-  "description": "Verify the user has their system set up correctly",
+  "description": "Verify and setup a repository for workshop attendees",
   "main": "dist/installed/index.js",
   "scripts": {
     "start": "nps",
@@ -12,7 +12,12 @@
   "files": [
     "dist"
   ],
-  "keywords": [],
+  "keywords": [
+    "workshop",
+    "tool",
+    "utility",
+    "repository"
+  ],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "dependencies": {

@@ -1,6 +1,6 @@
 # workshop-setup
 
-Verify the user has their system set up correctly
+Verify and setup a repository for workshop attendees
 
 [![Build Status][build-badge]][build]
 [![Code Coverage][coverage-badge]][coverage]
