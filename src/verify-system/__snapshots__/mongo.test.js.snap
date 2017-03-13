@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns mongod command not found error 1`] = `"There was an error determining your mongo version. This could be because the \`mongod\` command isn't available in your PATH. Learn how to fix this on windows (https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or on mac (http://stackoverflow.com/a/24322978/971592)."`;
+
+exports[`returns version mismatch error 1`] = `"Your version of mongo (3.8.2) does not satisfy the desired range of ^2.0.0. Please install a more recent version: https://www.mongodb.com/download-center"`;

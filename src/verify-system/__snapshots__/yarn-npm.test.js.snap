@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns npm version mismatch 1`] = `
+"You do not have yarn installed. This is a package manager client that installs from the regular npm registry, but ensures you get the same versions of all dependencies required for this repository. It is highly recommended that you install yarn: \`npm install --global yarn@^0.20.3\` (learn more: https://yarnpkg.com/)
+Note that you can also ignore this warning and continue with npm if you prefer.
+Your version of npm (3.11.3) does not satisfy the desired range of ^4.0.3. You should install yarn anyway, but if you would rather use npm, please at least have a version within the specified version range. You can install the latest version by running \`npm install --global npm@^4.0.3\`."
+`;
+
+exports[`returns yarn is not installed error when yarn version is wrong 1`] = `
+"You do not have yarn installed. This is a package manager client that installs from the regular npm registry, but ensures you get the same versions of all dependencies required for this repository. It is highly recommended that you install yarn: \`npm install --global yarn@^0.20.3\` (learn more: https://yarnpkg.com/)
+Note that you can also ignore this warning and continue with npm if you prefer."
+`;
+
+exports[`returns yarn mismatch error when yarn version is wrong 1`] = `"Your version of yarn (0.21.3) does not satisfy the desired range of ^0.20.3. Run \`yarn self-update\` (or \`npm install --global yarn@^0.20.3\`) to update."`;

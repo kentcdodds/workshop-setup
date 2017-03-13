@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns error if conditions are not satisfied 1`] = `"Your version of node (4.7.0) does not satisfy the desired range of 6.9.5. Please install a version within the range. You can use http://git.io/nvm or https://github.com/coreybutler/nvm-windows to make changing your version of node easier."`;
