@@ -161,9 +161,9 @@ This will install dependencies in the given directory/directories (defaults to
 var path = require('path')
 var installDeps = require('./workshop-setup').installDeps
 
-var main = path.resolve('..')
-var api = path.resolve('../api')
-var client = path.resolve('../client')
+var main = path.resolve(__dirname, '..')
+var api = path.resolve(__dirname, '../api')
+var client = path.resolve(__dirname, '../client')
 installDeps([main, api, client]).then(() => {
   console.log('👍  all dependencies installed')
 }, () => {
