@@ -152,10 +152,32 @@ Most of the utils are simply exposing other modules which are bundled with
 - [`commonTags`][common-tags]
 - [`semver`][semver] (really useful `satisfies` method on this one)
 
-### installDependencies
+### installDeps
 
-**TODO**: This doesn't exist yet, but I want it to! Wanna
-[make a pull request][prs]?
+This will install dependencies in the given directory/directories (defaults to
+`process.cwd()`) using `yarn` (if available) or `npm`.
+
+```javascript
+var path = require('path')
+var installDeps = require('./workshop-setup').installDeps
+
+var main = path.resolve('..')
+var api = path.resolve('../api')
+var client = path.resolve('../client')
+installDeps([main, api, client]).then(() => {
+  console.log('👍  all dependencies installed')
+}, () => {
+  // ignore, workshop-setup will log for us...
+})
+
+// you can also do:
+installDeps()
+// which is effectively
+installDeps(process.cwd())
+
+// or, to be more specific:
+installDeps(path.resolve('..'))
+```
 
 ## Inspiration
 
