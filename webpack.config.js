@@ -13,6 +13,7 @@ module.exports = {
   externals: {
     process: 'process',
     child_process: 'child_process', // eslint-disable-line camelcase
+    console: 'console',
   },
   module: {
     rules: [{test: /\.js$/, use: [{loader: 'babel-loader'}], include}],
