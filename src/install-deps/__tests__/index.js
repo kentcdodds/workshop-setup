@@ -1,6 +1,6 @@
 import consoleMock from 'console'
 import cpMock from 'child_process'
-import installDeps from './' // eslint-disable-line import/default
+import installDeps from '../' // eslint-disable-line import/default
 
 jest.mock('console', () => ({
   log: jest.fn(),
@@ -8,23 +8,8 @@ jest.mock('console', () => ({
 }))
 jest.mock('child_process')
 
-test('installs via yarn by default', async () => {
+test('installs via npm', async () => {
   await testInstallDeps()
-  const installer = 'yarn'
-  const args = ['--force --ignore-platform --ignore-engines']
-  expect(cpMock.spawn).toHaveBeenCalledWith(installer, args, {
-    stdio: 'inherit',
-    shell: true,
-    cwd: process.cwd(),
-  })
-})
-
-test('installs via npm if yarn is not available', async () => {
-  await testInstallDeps({
-    execSync: () => {
-      throw new Error('no yarn!')
-    },
-  })
   const installer = 'npm'
   const args = ['install']
   expect(cpMock.spawn).toHaveBeenCalledWith(installer, args, {
@@ -79,22 +64,12 @@ test('rejects if an exit code is non-zero', async () => {
   expect(consoleMock.error).toHaveBeenCalledTimes(1)
 })
 
-async function testInstallDeps(
-  {
-    execSync = () => '0.21.3',
-    onMock,
-    installDepsArgs,
-  } = {},
-) {
+async function testInstallDeps({onMock, installDepsArgs} = {}) {
   // not sure why, but default args for onMock messed things up...
   const onSpy = jest.fn(onMock || defaultOnMock)
-  cpMock.execSync.mockClear()
   cpMock.spawn.mockClear()
-  cpMock.execSync.mockImplementation(execSync)
   cpMock.spawn.mockImplementation(() => ({on: onSpy}))
   await installDeps(installDepsArgs)
-  expect(cpMock.execSync).toHaveBeenCalledTimes(1)
-  expect(cpMock.execSync).toHaveBeenCalledWith('yarn --version')
   expect(cpMock.spawn).toHaveBeenCalledTimes(getSpawnCalls())
   expect(onSpy).toHaveBeenCalledWith('exit', expect.any(Function))
 

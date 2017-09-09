@@ -1,13 +1,14 @@
-import commonTags, {oneLine} from 'common-tags'
-import indentString from 'indent-string'
-import semver from 'semver'
 import node from './node'
 import mongo from './mongo'
-import yarnNpm from './yarn-npm'
+import npm from './npm'
 import execValidator from './exec-validator'
 
-module.exports = validateAll
-Object.assign(module.exports, {
+const commonTags = require('common-tags')
+const indentString = require('indent-string')
+const semver = require('semver')
+
+export default validateAll
+Object.assign(validateAll, {
   utils: {
     execValidator,
     commonTags,
@@ -16,7 +17,7 @@ Object.assign(module.exports, {
   validators: {
     node,
     mongo,
-    yarnNpm,
+    npm,
   },
 })
 
@@ -32,7 +33,7 @@ function validateAll(validators = []) {
 
       return Promise.reject(
         [
-          oneLine`
+          commonTags.oneLine`
           There ${one ? 'is an issue' : 'are some issues'} with your system.
         `,
           indentString(errorMessages, 2),

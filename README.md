@@ -79,9 +79,9 @@ This allows you to verify the user's system is correct:
 var verifySystem = require('./workshop-setup').verifySystem
 
 var verifyPromise = verifySystem([
-  verifySystem.validators.node('^6.9.5'),
+  verifySystem.validators.node('^8.4.0'),
   verifySystem.validators.mongo('^3.4.2'),
-  verifySystem.validators.yarnNpm('^0.21.3', '^4.2.0')
+  verifySystem.validators.npm('^5.4.1')
 ])
 
 verifyPromise.then(function() {
@@ -136,12 +136,7 @@ are:
 
 - `node(desiredVersionRange)`
 - `mongo(desiredVersionRange)`
-- `yarnNpm(desiredYarnVersionRange, desiredNpmVersionRange)`
-
-With the `yarn` one, if yarn does not exist, then `npm` is verified, but the
-user is still given an error message indicating they should probably install
-`yarn`. There's currently no `yarn`-only or `npm`-only validator (fell free to
-[make a pull request][prs]).
+- `npm(desiredNpmVersionRange)`
 
 #### utils
 
@@ -155,7 +150,7 @@ Most of the utils are simply exposing other modules which are bundled with
 ### installDeps
 
 This will install dependencies in the given directory/directories (defaults to
-`process.cwd()`) using `yarn` (if available) or `npm`.
+`process.cwd()`) using `npm`.
 
 ```javascript
 var path = require('path')

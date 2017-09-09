@@ -1,27 +1,15 @@
 /* eslint no-console:0 */
-import cp from 'child_process'
-import console from 'console'
+const cp = require('child_process')
+const console = require('console')
 
-module.exports = installDeps
+export default installDeps
 
 function installDeps(directories = [process.cwd()]) {
   if (!Array.isArray(directories)) {
     directories = [directories]
   }
-  let installer, args
-  try {
-    cp.execSync('yarn --version')
-    // yay! No error! Yarn's available!
-    installer = 'yarn'
-    // ignore the cache, platform, and engines
-    args = ['--force --ignore-platform --ignore-engines']
-  } catch (e) {
-    // use npm instead :-(
-    installer = 'npm'
-    args = ['install']
-  }
 
-  console.log(`📦  Installing dependencies via ${installer} ${args.join(' ')}`)
+  console.log(`📦  Installing dependencies via npm install`)
 
   let promise = Promise.resolve()
   directories.forEach(dir => {
@@ -32,7 +20,7 @@ function installDeps(directories = [process.cwd()]) {
   function spawnInstall(cwd) {
     return new Promise((resolve, reject) => {
       console.log(`🔑  starting install in ${cwd}`)
-      const child = cp.spawn(installer, args, {
+      const child = cp.spawn('npm', ['install'], {
         stdio: 'inherit',
         shell: true,
         cwd,

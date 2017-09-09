@@ -1,6 +1,6 @@
 import cpMock from 'child_process'
 import {satisfies as satisfiesMock} from 'semver'
-import validateMongo from './mongo'
+import validateMongo from '../mongo'
 
 jest.mock('child_process')
 
@@ -34,10 +34,7 @@ test('returns mongod command not found error', () => {
 })
 
 function setup(
-  {
-    mockExecResult = 'db version blah blah 3.4.5',
-    satisfies = true,
-  } = {},
+  {mockExecResult = 'db version blah blah 3.4.5', satisfies = true} = {},
 ) {
   satisfiesMock.mockClear()
   cpMock.execSync.mockClear()

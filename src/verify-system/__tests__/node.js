@@ -1,6 +1,6 @@
 import mockProcess from 'process'
 import {satisfies as satisfiesMock} from 'semver'
-import validateNode from './node'
+import validateNode from '../node'
 
 jest.mock('process', () => ({
   versions: {
@@ -25,12 +25,7 @@ test('returns error if conditions are not satisfied', () => {
   expect(result).toMatchSnapshot()
 })
 
-function setup(
-  {
-    version = '6.9.5',
-    satisfies = true,
-  } = {},
-) {
+function setup({version = '6.9.5', satisfies = true} = {}) {
   mockProcess.versions.node = version
   satisfiesMock.mockClear()
   satisfiesMock.mockImplementation(() => satisfies)

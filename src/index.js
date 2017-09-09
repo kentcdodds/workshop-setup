@@ -1,4 +1,4 @@
-const verifySystem = require('./verify-system')
-const installDeps = require('./install-deps')
+import verifySystem from './verify-system'
+import installDeps from './install-deps'
 
-module.exports = {verifySystem, installDeps}
+export {verifySystem, installDeps}

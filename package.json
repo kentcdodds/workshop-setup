@@ -2,22 +2,18 @@
   "name": "workshop-setup",
   "version": "0.0.0-development",
   "description": "Verify and setup a repository for workshop attendees",
-  "main": "dist/installed/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "nps",
-    "test": "nps test",
-    "commitmsg": "opt --in commit-msg --exec \"validate-commit-msg\"",
-    "precommit": "lint-staged && opt --in pre-commit --exec \"npm start validate\""
+    "add-contributor": "kcd-scripts contributors add",
+    "build": "kcd-scripts build && webpack",
+    "lint": "kcd-scripts lint",
+    "test": "kcd-scripts test",
+    "test:update": "npm test -- --updateSnapshot --coverage",
+    "validate": "kcd-scripts validate",
+    "precommit": "kcd-scripts precommit"
   },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "workshop",
-    "tool",
-    "utility",
-    "repository"
-  ],
+  "files": ["dist"],
+  "keywords": ["workshop", "tool", "utility", "repository"],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "dependencies": {
@@ -26,61 +22,18 @@
     "semver": "^5.3.0"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.0.1",
-    "babel-cli": "^6.23.0",
-    "babel-core": "^6.24.0",
-    "babel-jest": "^19.0.0",
-    "babel-loader": "^6.4.0",
-    "babel-preset-env": "^1.2.0",
-    "babel-preset-stage-2": "^6.22.0",
-    "babel-register": "^6.23.0",
-    "codecov": "^1.0.1",
-    "commitizen": "^2.9.6",
-    "cz-conventional-changelog": "^2.0.0",
-    "eslint": "^3.17.0",
-    "eslint-config-kentcdodds": "^12.0.0",
-    "husky": "^0.13.2",
-    "jest-cli": "^19.0.2",
-    "lint-staged": "^3.4.0",
-    "nps": "^5.0.3",
-    "nps-utils": "^1.1.2",
-    "opt-cli": "^1.5.1",
-    "prettier-eslint-cli": "^3.1.2",
-    "semantic-release": "^6.3.2",
-    "validate-commit-msg": "^2.11.1",
-    "webpack": "^2.2.1"
+    "babel-loader": "7.1.2",
+    "kcd-scripts": "^0.8.0"
   },
   "eslintConfig": {
-    "extends": [
-      "kentcdodds",
-      "kentcdodds/jest",
-      "kentcdodds/prettier"
-    ]
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    },
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
+    "extends": ["./node_modules/kcd-scripts/eslint.js"],
+    "rules": {
+      "import/order": "off"
     }
+  },
+  "eslintIgnore": ["node_modules", "coverage", "dist"],
+  "babel": {
+    "presets": ["kcd-scripts/babel"]
   },
   "repository": {
     "type": "git",

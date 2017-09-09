@@ -1,6 +1,6 @@
 import cpMock from 'child_process'
 import {satisfies as satisfiesMock} from 'semver'
-import execValidator from './exec-validator'
+import execValidator from '../exec-validator'
 
 jest.mock('child_process')
 
@@ -28,12 +28,7 @@ test('returns call to message if the version is not satisfied', () => {
   expect(messageCallback).toHaveBeenCalledWith(mockActual, desired)
 })
 
-function setup(
-  {
-    mockActual = '1.2.3',
-    satisfies = true,
-  } = {},
-) {
+function setup({mockActual = '1.2.3', satisfies = true} = {}) {
   satisfiesMock.mockClear()
   cpMock.execSync.mockClear()
   satisfiesMock.mockImplementation(() => satisfies)

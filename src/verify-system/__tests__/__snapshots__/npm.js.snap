@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`returns npm version mismatch 1`] = `"Your version of npm (3.11.3) does not satisfy the desired range of ^4.0.3. You should install yarn anyway, but if you would rather use npm, please at least have a version within the specified version range. You can install the latest version by running \`npm install --global npm@^4.0.3\`."`;

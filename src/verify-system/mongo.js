@@ -1,8 +1,6 @@
-import cp from 'child_process'
-import {oneLine, oneLineTrim} from 'common-tags'
-import semver from 'semver'
-
-const {execSync} = cp
+const {execSync} = require('child_process')
+const {oneLine, oneLineTrim} = require('common-tags')
+const semver = require('semver')
 
 export default getMongoValidator
 

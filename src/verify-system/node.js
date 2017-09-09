@@ -1,6 +1,6 @@
-import process from 'process'
-import semver from 'semver'
-import {oneLine} from 'common-tags'
+const process = require('process')
+const semver = require('semver')
+const {oneLine} = require('common-tags')
 
 export default getNodeValidator
 
