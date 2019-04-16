@@ -1,6 +1,6 @@
 {
   "name": "workshop-setup",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantically-released",
   "description": "Verify and setup a repository for workshop attendees",
   "main": "dist/index.js",
   "engines": {
