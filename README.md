@@ -1,21 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [workshop-setup](#workshop-setup)
-  - [The problem](#the-problem)
-  - [This solution](#this-solution)
-  - [Installation](#installation)
-  - [Usage](#usage)
-    - [Alternative usage](#alternative-usage)
-    - [verifySystem](#verifysystem)
-    - [installDeps](#installdeps)
-  - [Inspiration](#inspiration)
-  - [Other Solutions](#other-solutions)
-  - [Contributors](#contributors)
-  - [LICENSE](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # workshop-setup
 
 Verify and setup a repository for workshop attendees
@@ -55,6 +37,21 @@ strings of helpful text (or a promise that resolves to a string of helpful text)
 if the system is not valid (or `null` if it is valid). To overcome the issue of
 not being able to install things, there is a bundled version of this module that
 you can download from the registry and commit directly to your project.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Alternative usage](#alternative-usage)
+  - [verifySystem](#verifysystem)
+  - [installDeps](#installdeps)
+- [Inspiration](#inspiration)
+- [Other Solutions](#other-solutions)
+- [Contributors](#contributors)
+- [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
 
