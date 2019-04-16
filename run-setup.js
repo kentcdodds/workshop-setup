@@ -1,3 +1,8 @@
+// lol, I realized after writing this that it doesn't really make sense because
+// folks who need to run this wont have the package installed anyway, so this
+// file is basically useless, but I'll leave it here as something that can be
+// copy/pasted in each individual project :)
+
 var path = require('path')
 var setup = require('./dist').setup
 

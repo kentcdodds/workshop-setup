@@ -6,6 +6,7 @@
   - [This solution](#this-solution)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [Alternative usage](#alternative-usage)
     - [verifySystem](#verifysystem)
     - [installDeps](#installdeps)
   - [Inspiration](#inspiration)
@@ -60,10 +61,10 @@ you can download from the registry and commit directly to your project.
 The way I expect people to use this module is by downloading the UMD build and
 committing it directly into their project. You can download the UMD build via
 npm if you like (then just copy/paste the file from `node_modules`) or download
-it from `unpkg.com` here: https://unpkg.com/workshop-setup/dist/bundled/index.js
+it from `unpkg.com` here: https://unpkg.com/workshop-setup/dist/index.js
 
 ```
-curl -o scripts/workshop-setup.js -L https://unpkg.com/workshop-setup/dist/bundled/index.js
+curl -o scripts/workshop-setup.js -L https://unpkg.com/workshop-setup/dist/index.js
 ```
 
 This module is distributed via [npm][npm] which is bundled with [node][node] and
@@ -74,6 +75,40 @@ npm install --save-dev workshop-setup
 ```
 
 ## Usage
+
+Here's what I recommend:
+
+1. Download the workshop-setup script into `scripts/workshop-setup.js`
+2. Add `engines` config to your `packge.json` with `node`, `npm`, and `yarn`
+   listed
+3. Add a `script` to your `package.json` called `setup` with:
+   `node ./scripts/setup`
+4. Create the `scripts/setup.js` file
+5. And put this in it:
+
+```javascript
+var path = require('path')
+var pkg = require(path.join(process.cwd(), 'package.json'))
+
+// if you install it then this should be require('workshop-setup')
+// but that... doesn't really make sense.
+require('./workshop-setup')
+  .setup(pkg.engines)
+  .then(
+    () => {
+      console.log(`💯  You're all set up! 👏`)
+    },
+    error => {
+      console.error(`🚨  There was a problem:`)
+      console.error(error)
+      console.error(
+        `\nIf you would like to just ignore this error, then feel free to do so and install dependencies as you normally would in "${process.cwd()}". Just know that things may not work properly if you do...`,
+      )
+    },
+  )
+```
+
+### Alternative usage
 
 Whether you install it or download it, usage is basically the same. The
 difference is how you require it.
@@ -94,7 +129,6 @@ var verifySystem = require('./workshop-setup').verifySystem
 
 var verifyPromise = verifySystem([
   verifySystem.validators.node('^8.4.0'),
-  verifySystem.validators.mongo('^3.4.2'),
   verifySystem.validators.npm('^5.4.1'),
 ])
 
@@ -155,7 +189,7 @@ The built-in validators available on `workshopSetup.verifySystem.validators`
 are:
 
 - `node(desiredVersionRange)`
-- `mongo(desiredVersionRange)`
+- `yarn(desiredVersionRange)`
 - `npm(desiredNpmVersionRange)`
 
 #### utils
