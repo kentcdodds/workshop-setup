@@ -38,6 +38,8 @@ if the system is not valid (or `null` if it is valid). To overcome the issue of
 not being able to install things, there is a bundled version of this module that
 you can download from the registry and commit directly to your project.
 
+## Table of Contents
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
