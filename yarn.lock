@@ -4627,10 +4627,10 @@ jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
-kcd-scripts@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/kcd-scripts/-/kcd-scripts-1.2.0.tgz#87c4278cd2a895a35297e36e1042b94509f16049"
-  integrity sha512-uelTu9oK1VdSAZg/9RoRfd4flaS6G5kFjkYWjAZlBhHIY2C8agCJ+FVlbNAKthMxq+2fr+NViHrx/rZNsawYHg==
+kcd-scripts@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/kcd-scripts/-/kcd-scripts-1.2.1.tgz#7a3de96bd4b6911d27f3394c51f6cc4cf09e5298"
+  integrity sha512-ZYXPwn9GgIas3F3Isp2uGVBQKoqRfDMtMiNP8rKk46Qzn3vn6C+2V8Qfnn7bx3aKFsUQ/HJlj6GhGU/UbpBUxA==
   dependencies:
     "@babel/cli" "^7.2.0"
     "@babel/core" "^7.4.0"
