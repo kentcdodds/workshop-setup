@@ -1,7 +1,6 @@
-/* eslint no-console:0 */
 import cpMock from 'child_process'
-import {oneLine} from 'common-tags'
 import {satisfies as satisfiesMock} from 'semver'
+import oneLine from '../../utils/one-line'
 import validateNpm from '../npm'
 
 jest.mock('child_process')
@@ -19,7 +18,6 @@ test('returns npm version mismatch', () => {
   const result = validateNpm(desiredNpm)()
   expect(result).toContain(desiredNpm)
   expect(result).toContain(mockNpmVersion)
-  expect(result).toContain('use npm')
   expect(result).toMatchSnapshot()
 })
 

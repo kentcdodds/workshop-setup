@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/default
 import verifySystem from '../'
 
 test('resolve null with no errors', async () => {

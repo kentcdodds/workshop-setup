@@ -1,17 +1,24 @@
-import consoleMock from 'console'
 import cpMock from 'child_process'
 import installDeps from '../' // eslint-disable-line import/default
 
-jest.mock('console', () => ({
-  log: jest.fn(),
-  error: jest.fn(),
-}))
 jest.mock('child_process')
+
+beforeEach(() => {
+  jest.spyOn(console, 'log').mockImplementation(() => {})
+  jest.spyOn(console, 'warn').mockImplementation(() => {})
+  jest.spyOn(console, 'error').mockImplementation(() => {})
+})
+
+afterEach(() => {
+  console.log.mockRestore()
+  console.warn.mockRestore()
+  console.error.mockRestore()
+})
 
 test('installs via npm', async () => {
   await testInstallDeps()
   const installer = 'npm'
-  const args = ['install']
+  const args = ['install', '--no-package-lock']
   expect(cpMock.spawn).toHaveBeenCalledWith(installer, args, {
     stdio: 'inherit',
     shell: true,
@@ -61,7 +68,7 @@ test('rejects if an exit code is non-zero', async () => {
     error = e
   }
   expect(error).toEqual(process.cwd())
-  expect(consoleMock.error).toHaveBeenCalledTimes(1)
+  expect(console.error).toHaveBeenCalledTimes(1)
 })
 
 async function testInstallDeps({onMock, installDepsArgs} = {}) {
@@ -90,3 +97,5 @@ async function testInstallDeps({onMock, installDepsArgs} = {}) {
     }
   }
 }
+
+/* eslint no-console:0 */
